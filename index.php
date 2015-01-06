@@ -7,6 +7,7 @@
  */
 
 define('BASE_DIR',__DIR__);
-include_once(BASE_DIR.'/app/code/autoloader.php');
+define('DS', DIRECTORY_SEPARATOR);
+include_once(BASE_DIR.DS.'app'.DS.'code'.DS.'class'.DS.'Load.php');
 
 Load::run();
