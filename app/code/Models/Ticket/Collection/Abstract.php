@@ -6,7 +6,7 @@
  * Time: 13:48
  */
 
-class Ticket_Collection_Abstract extends Session_Abstract
+class Models_Ticket_Collection_Abstract extends Models_Session_Abstract
 {
 
     private $_data = array();

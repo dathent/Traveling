@@ -8,6 +8,6 @@
 
 define('BASE_DIR',__DIR__);
 define('DS', DIRECTORY_SEPARATOR);
-include_once(BASE_DIR.DS.'app'.DS.'code'.DS.'class'.DS.'Load.php');
+include_once(BASE_DIR.DS.'app'.DS.'code'.DS.'Load.php');
 
 Load::run();

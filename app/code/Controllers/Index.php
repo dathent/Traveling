@@ -9,6 +9,6 @@ class Controllers_Index extends Controllers_Abstract{
 
     public function indexAction()
     {
-        echo "work :-)";
+        $this->toHtml();
     }
 }

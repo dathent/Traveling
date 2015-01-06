@@ -1,0 +1,10 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Traveling</title>
+    <?php foreach($this->getCss() as $css):?>
+         <link rel="stylesheet" type="text/css" href="<?php echo $css ?>" media="all">
+    <?php endforeach; ?>
+    <?php foreach($this->getJs() as $js): ?>
+        <script type="text/javascript" src="<?php echo $js ?>"></script>
+    <?php endforeach; ?>
+</head>

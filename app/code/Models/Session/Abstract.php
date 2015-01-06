@@ -6,7 +6,7 @@
  * Time: 14:04
  */
 
-class Session_Abstract{
+class Models_Session_Abstract{
 
 
     public function __construct()

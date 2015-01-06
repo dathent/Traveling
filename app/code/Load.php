@@ -12,15 +12,12 @@ class Load{
     {
         $load = new self;
 
-        define('CLASS_DIR',BASE_DIR.DS.'app'.DS.'code'.DS.'class');
+        define('CODE_DIR',BASE_DIR.DS.'app'.DS.'code');
 
-        $load->getAllClass(CLASS_DIR);
+        $load->getAllClass(CODE_DIR);
 
         define('BASE_URL',$load->getBaseUrl());
-        define('CONTROLLERS_DIR',CLASS_DIR.DS.'Controllers');
-
         new Controllers_Actions();
-        return $load;
 
     }
 
@@ -53,6 +50,8 @@ class Load{
         }
         return $baseUrl.'/index.php';
     }
+
+
 
 
 }
