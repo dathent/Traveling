@@ -58,13 +58,16 @@ class Controllers_Abstract{
         return $currentAction;
     }
 
+
     public function toHtml()
     {
         $this->setBlock('footer','footer')->_toHtml();
     }
+
+
     private function _toHtml()
     {
-        $html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html>';
+        $html = '<!DOCTYPE html><html>';
         $bodyStart = true;
         foreach($this->_data['blocks'] as $reference => $block){
             if($reference != 'head'){
@@ -89,7 +92,7 @@ class Controllers_Abstract{
         }
         $html .= '</body></html>';
         echo $html;
-
+        return;
     }
 
 }

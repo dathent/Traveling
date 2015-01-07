@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: azure;
+}
+a{
+    text-decoration: none;
+    
+}
+.header_container, .footer_container, .content_block{
+    width: 1000px;
+    margin: 0 auto;
+    background: #A7E5E0;
+    overflow: auto;
+    padding: 15px
+}
+.button:hover{
+    color: black;
+    background: rgb(253, 82, 95);
+    cursor: pointer;
+}
+.button{
+    width: auto;
+    padding: 10px;
+    background: rgb(245, 5, 23);
+    color: rgb(253, 253, 252);
+    font-weight: 600;
+    border: none;
+}
+.header_container h1{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+    zoom: 2;
+    color: darkslategray;
+}
+.footer_container ul, .header_container ul{
+    list-style: none;
+    margin: 0 auto;
+    display: block;
+}
+.header_container .menu_container{
+    margin-left: 50px;  padding-top: 20px;
+}
+.header_container li{
+    displai: inline-block;
+    float: left;
+    margin-right: 10px;
+
+}
+
+.footer_container{
+    background: #2AB872;
+}
+.footer_container .contact_list{
+    width: 300px;
+    overflow: auto;
+}
+.footer_container li, .header_container li{
+    display: block;
+}
+.content_block{
+ background: rgb(5, 245, 181);
+}

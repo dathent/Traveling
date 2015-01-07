@@ -6,7 +6,7 @@
  * Time: 22:55
  */
 
-class Controllers_Ticketform extends Controllers_Abstract
+class Controllers_Ticket extends Controllers_Abstract
 {
     public function indexAction()
     {
@@ -18,5 +18,7 @@ class Controllers_Ticketform extends Controllers_Abstract
 
 
     }
+
+
 
 }

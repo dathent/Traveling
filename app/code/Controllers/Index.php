@@ -9,6 +9,6 @@ class Controllers_Index extends Controllers_Abstract{
 
     public function indexAction()
     {
-        $this->toHtml();
+        $this->setBlock('task','content_block')->toHtml();
     }
 }
