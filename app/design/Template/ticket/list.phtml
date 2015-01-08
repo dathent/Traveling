@@ -1,0 +1,40 @@
+<?php $sortTickets = (get_class($this) == 'Block_Sortingtickets') ? true : false; ?>
+<div class="tickets">
+    <?php if(count($this->getItems())): ?>
+    <div class="title">
+        <h1><?php echo ($sortTickets) ? 'Travel itinerary' : 'Ticket list:'; ?></h1>
+    </div>
+    <div class="list">
+        <ul class="ticket_list">
+            <?php if($sortTickets): ?>
+                <li>Start of travel:</li>
+            <?php endif; ?>
+        <?php foreach($this->getItems() as $item): ?>
+            <li>
+                <div class="ticket_container">
+                <?php foreach($item->getData() as $key => $value): ?>
+                    <?php if(!in_array($key,array('id','time_create')) && $value): ?>
+                        <div class="property">
+                            <div class="property_container"><?php echo $item->_propertiesItem[$key] ;?>: <strong><?php echo ($key == 'type_transport') ? $item->_typeTransport[$value] : $value; ?></strong></div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+            <?php if($sortTickets): ?>
+                <li>You have arrived at your final destination.</li>
+            <?php endif; ?>
+        </ul>
+        <?php if(!$sortTickets): ?>
+            <button class="button" onclick="window.location='<?php echo BASE_URL.'/ticket/clear' ?>'">
+                <span>Clear List</span>
+            </button>
+        <?php endif; ?>
+    </div>
+    <?php else: ?>
+        <div class="title">
+            <h1>You do not have boarding passes.</h1>
+        </div>
+    <?php endif; ?>
+</div>

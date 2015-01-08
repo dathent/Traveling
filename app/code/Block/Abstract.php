@@ -1,29 +1,46 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dmytryi
- * Date: 06.01.2015
- * Time: 18:21
- */
-class Block_Abstract{
 
+/**
+ * Class Block_Abstract
+ */
+abstract class Block_Abstract extends Object_Abstract{
+
+    /**
+     * @var string
+     */
     public $html = '';
 
+    /**
+     * @var
+     */
     public $template;
 
+    /**
+     * @var
+     */
     public $templateDirectory;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->templateDirectyory = BASE_DIR.DS.'app'.DS.'design'.DS.'Template';
         $this->_init();
     }
 
+    /**
+     *
+     */
     protected function _init()
     {
         $this->setTemplate('html/home.phtml');
     }
 
+    /**
+     * @param $nameTemplate
+     * @return $this
+     */
     public function setTemplate($nameTemplate)
     {
         $templateFile = $this->templateDirectyory.DS.str_ireplace('/',DS,$nameTemplate);
@@ -34,6 +51,9 @@ class Block_Abstract{
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function toHtml()
     {
 

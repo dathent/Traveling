@@ -1,21 +1,29 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: Dmytryi
- * Date: 06.01.2015
- * Time: 14:50
+ * Class Controllers_Abstract
  */
-class Controllers_Abstract{
+abstract class Controllers_Abstract extends Object_Abstract{
 
 
+    /**
+     * @var array
+     */
     private $_data = array();
 
 
+
+    /**
+     *
+     */
     public function __construct()
     {
         $this->_initAction();
     }
 
+    /**
+     *
+     */
     protected function _initAction()
     {
         $this->_data['blocks'] = array(
@@ -25,23 +33,21 @@ class Controllers_Abstract{
     }
 
 
-   public function setBlock($blockName, $reference)
+    /**
+     * @param $blockName
+     * @param $reference
+     * @return $this
+     */
+    public function setBlock($blockName, $reference)
    {
        $this->_data['blocks'][$reference] = $this->getBlock($blockName);
        return $this;
    }
 
-    public function getBlock($blockName)
-    {
-        $blockClass = 'Block_'.ucfirst($blockName);
-        $block = null;
-        if(class_exists($blockClass)){
-            $block = new $blockClass;
-        }
-        return $block;
-    }
 
-
+    /**
+     * @return array
+     */
     protected function getControllerAction()
     {
         $requestUrl = $_SERVER['REQUEST_URI'];
@@ -59,15 +65,27 @@ class Controllers_Abstract{
     }
 
 
+    /**
+     * @return $this
+     */
     public function toHtml()
     {
-        $this->setBlock('footer','footer')->_toHtml();
+        return $this->setBlock('footer','footer')->_toHtml();
     }
 
 
+    /**
+     * @return $this
+     */
     private function _toHtml()
     {
         $html = '<!DOCTYPE html><html>';
+        if($this->isRedirect()){
+            $html .= $this->_data['blocks']['head']->toHtml();
+            $html .= '<body></body></html>';
+            echo $html;
+            return $this;
+        }
         $bodyStart = true;
         foreach($this->_data['blocks'] as $reference => $block){
             if($reference != 'head'){
@@ -91,8 +109,12 @@ class Controllers_Abstract{
 
         }
         $html .= '</body></html>';
+
         echo $html;
-        return;
+
+        return $this;
     }
+
+
 
 }

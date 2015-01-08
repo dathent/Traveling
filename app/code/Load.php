@@ -1,26 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dmytryi
- * Date: 06.01.2015
- * Time: 14:09
- */
 
+/**
+ * Class Load
+ */
 class Load{
 
+    /**
+     *
+     */
     public static function run()
     {
         $load = new self;
 
         define('CODE_DIR',BASE_DIR.DS.'app'.DS.'code');
 
+        include_once(CODE_DIR.DS.'Object.php');
+
         $load->getAllClass(CODE_DIR);
 
         define('BASE_URL',$load->getBaseUrl());
+
+        session_start();
+
         new Controllers_Actions();
 
     }
 
+
+    /**
+     * @param $directory
+     */
     private function getAllClass($directory)
     {
         if($openDir = opendir($directory))
@@ -41,6 +50,9 @@ class Load{
 
     }
 
+    /**
+     * @return string
+     */
     public function getBaseUrl()
     {
         $baseUrl = mb_strtolower(str_ireplace('/','',stristr($_SERVER['SERVER_PROTOCOL'],'/',true))).'://'.$_SERVER['SERVER_NAME'];

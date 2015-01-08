@@ -5,21 +5,21 @@ body{
 }
 a{
     text-decoration: none;
-    
+
 }
-.header_container, .footer_container, .content_block{
+.header_container, .footer_container, .content_block, .ticket_add_form, .ticket_list{
     width: 1000px;
     margin: 0 auto;
     background: #A7E5E0;
     overflow: auto;
     padding: 15px
 }
-.button:hover{
+.button:hover, .button_form button:hover{
     color: black;
     background: rgb(253, 82, 95);
     cursor: pointer;
 }
-.button{
+.button, .button_form button{
     width: auto;
     padding: 10px;
     background: rgb(245, 5, 23);
@@ -43,7 +43,7 @@ a{
     margin-left: 50px;  padding-top: 20px;
 }
 .header_container li{
-    displai: inline-block;
+    display: inline-block;
     float: left;
     margin-right: 10px;
 
@@ -59,6 +59,56 @@ a{
 .footer_container li, .header_container li{
     display: block;
 }
-.content_block{
- background: rgb(5, 245, 181);
+.content_block, .ticket_add_form, .ticket_list{
+    background: rgb(5, 245, 181);
+}
+.property{
+    display: inline-block;
+    margin-left: 10px;
+}
+.input select, .input input{
+    width: 110px;
+}
+.property label p{
+   width: 125px;
+   margin: 0 0 5px;
+   padding: 0;
+}
+fieldset, .input{
+    padding: 0px;
+}
+legend{
+    margin-left: 20px;
+    font-size: 1.5em;
+}
+.add_ticket{
+    width: 20px;    
+    height: 20px;
+    border: 1px solid rgb(237, 218, 17);
+    background: rgb(245, 5, 23);
+    font-size: 26px;
+    font-weight: 900;
+    color: rgb(27, 5, 160);
+    margin: 10px;
+    cursor: pointer;
+}
+.add_ticket:hover{
+    border-color: rgb(245, 5, 23);
+    background: rgb(237, 218, 17);
+}
+.add_ticket span{
+    position: relative;
+    bottom: 3px;
+    left: 3px;
+}
+
+.button_form{
+     margin: 20px 0 10px 10px;
+}
+.list{
+    overflow: hidden;
+}
+.ticket_list .ticket_container{
+    background: rgb(250, 249, 167);
+    margin: 10px;
 }
