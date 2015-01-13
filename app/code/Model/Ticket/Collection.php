@@ -11,7 +11,7 @@ class Model_Ticket_Collection extends Model_Abstract
 
     protected $_modelName = 'ticket/collection';
 
-    public $_data = array(
+    public $data = array(
         'items' => array(),
         'sorting_tickets' => array(),
     );
@@ -20,12 +20,12 @@ class Model_Ticket_Collection extends Model_Abstract
 
     public function getItem($id)
     {
-        return (isset($this->_data['items'][$id])) ? $this->_data['items'][$id] : null;
+        return (isset($this->data['items'][$id])) ? $this->data['items'][$id] : null;
     }
 
     public function getItems()
     {
-        return $this->_data['items'];
+        return $this->data['items'];
     }
 
     public function saveItem($item)
@@ -34,17 +34,17 @@ class Model_Ticket_Collection extends Model_Abstract
         if(!$idItem){
             $idItem = $this->_getNewItemId($item);
         }
-        $this->_data['items'][$idItem] = $item;
+        $this->data['items'][$idItem] = $item;
         $this->save();
     }
 
     private function _getNewItemId($item)
     {
-        if($this->_data['items']){
+        if($this->data['items']){
 
-            end($this->_data['items']);
-            $newItemId = key($this->_data['items'])+1;
-            reset($this->_data['items']);
+            end($this->data['items']);
+            $newItemId = key($this->data['items'])+1;
+            reset($this->data['items']);
         }else{
             $newItemId = 1;
         }

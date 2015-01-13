@@ -7,7 +7,7 @@ a{
     text-decoration: none;
 
 }
-.header_container, .footer_container, .content_block, .ticket_add_form, .ticket_list{
+.header_container, .footer_container, .content_block, .ticket_add_form, .ticket_list, .error{
     width: 1000px;
     margin: 0 auto;
     background: #A7E5E0;
@@ -111,4 +111,14 @@ legend{
 .ticket_list .ticket_container{
     background: rgb(250, 249, 167);
     margin: 10px;
+}
+.error {
+    background: #05F5B5;
+}
+.error ul{
+    background: rgb(252, 173, 150);
+    
+    padding: 10px;
+    list-style: none;
+    border: 1px solid red;
 }

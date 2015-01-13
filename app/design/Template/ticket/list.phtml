@@ -15,7 +15,7 @@
                 <?php foreach($item->getData() as $key => $value): ?>
                     <?php if(!in_array($key,array('id','time_create')) && $value): ?>
                         <div class="property">
-                            <div class="property_container"><?php echo $item->_propertiesItem[$key] ;?>: <strong><?php echo ($key == 'type_transport') ? $item->_typeTransport[$value] : $value; ?></strong></div>
+                            <div class="property_container"><?php echo $item->propertiesItem[$key] ;?>: <strong><?php echo ($key == 'type_transport') ? $item->typeTransport[$value] : $value; ?></strong></div>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>

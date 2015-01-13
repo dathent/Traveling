@@ -18,12 +18,12 @@ class Block_Addticket extends Block_Abstract{
 
     public function getTypeTransport()
     {
-        return $this->_getModelTicket()->_typeTransport;
+        return $this->_getModelTicket()->typeTransport;
     }
 
     public function getPropertiesTicket()
     {
-        $propertiesTicket = $this->_getModelTicket()->_propertiesItem;
+        $propertiesTicket = $this->_getModelTicket()->propertiesItem;
         unset($propertiesTicket['id']);
         unset($propertiesTicket['time_create']);
         return $propertiesTicket;

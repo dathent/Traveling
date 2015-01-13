@@ -9,7 +9,7 @@ class Model_Ticket_Item extends Model_Abstract{
     /**
      * @var array
      */
-    public $_propertiesItem = array(
+    public $propertiesItem = array(
         'id' =>'identifier' ,
         'time_create' => 'Time create',
         'type_transport' => 'Type transport',
@@ -24,7 +24,7 @@ class Model_Ticket_Item extends Model_Abstract{
     /**
      * @var array
      */
-    public $_typeTransport = array(
+    public $typeTransport = array(
         'train' => 'Train',
         'bus' => 'Bus',
         'airliner' => 'Airliner',
@@ -39,7 +39,7 @@ class Model_Ticket_Item extends Model_Abstract{
     /**
      * @var array
      */
-    public $_data = array();
+    public $data = array();
 
     /**
      *
@@ -72,10 +72,10 @@ class Model_Ticket_Item extends Model_Abstract{
      */
     private function _setData($key,$value)
     {
-        if(array_key_exists($key, $this->_propertiesItem)){
+        if(array_key_exists($key, $this->propertiesItem)){
             if($key != 'type_transport'){
                 parent::setData($key,$value);
-            }elseif(array_key_exists($value, $this->_typeTransport)){
+            }elseif(array_key_exists($value, $this->typeTransport)){
                 parent::setData($key,$value);
             }
         }

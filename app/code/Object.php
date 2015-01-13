@@ -1,11 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dmytryi
- * Date: 07.01.2015
- * Time: 12:21
- */
 
+/**
+ * Class Object_Abstract
+ */
 abstract class Object_Abstract{
 
 
@@ -46,6 +43,10 @@ abstract class Object_Abstract{
     }
 
 
+    /**
+     * @param string $name
+     * @return bool
+     */
     public function getPostData($name = '')
     {
         $dataPost = (isset($_POST)) ? $_POST : false;
@@ -63,24 +64,57 @@ abstract class Object_Abstract{
     }
 
 
+    /**
+     * @param $url
+     * @return $this
+     */
     public function setRedirect($url)
     {
         define('REDIRECT',BASE_URL.'/'.$url);
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getRedirect()
     {
        return ($this->isRedirect())? REDIRECT : BASE_URL;
     }
 
+    /**
+     * @return bool
+     */
     public function isRedirect()
     {
         return defined('REDIRECT');
     }
 
+    /**
+     * @return bool
+     */
+    public function getError()
+    {
+        return (isset($_SESSION['error'])) ? $_SESSION['error'] : false;
+    }
 
+    /**
+     * @param $error
+     * @return $this
+     */
+    public function setError($error)
+    {
+        $_SESSION['error'][] = $error;
+        return $this;
+    }
 
-
+    /**
+     * @return $this
+     */
+    public function unsetError()
+    {
+        unset($_SESSION['error']);
+        return $this;
+    }
 
 }

@@ -8,7 +8,7 @@ abstract class Model_Abstract extends Object_Abstract{
     /**
      * @var array
      */
-    public $_data = array();
+    public $data = array();
 
     /**
      * @var string
@@ -21,7 +21,7 @@ abstract class Model_Abstract extends Object_Abstract{
      */
     public function __construct()
     {
-        $this->_data = $this->_getSessionData();
+        $this->data = $this->_getSessionData();
     }
 
 
@@ -46,7 +46,7 @@ abstract class Model_Abstract extends Object_Abstract{
     public function save()
     {
         if($this->_modelName != ''){
-            $_SESSION['data'][$this->_modelName] = $this->_data;
+            $_SESSION['data'][$this->_modelName] = $this->data;
         }else{
            $_SESSION['data'] = array();
         }
@@ -70,9 +70,9 @@ abstract class Model_Abstract extends Object_Abstract{
     public function setData($name, $value = null)
     {
         if(is_array($name)){
-            $this->_data = $name;
+            $this->data = $name;
         }else{
-            $this->_data[$name] = $value;
+            $this->data[$name] = $value;
         }
         return $this;
     }
@@ -84,9 +84,9 @@ abstract class Model_Abstract extends Object_Abstract{
     public function getData($name = '')
     {
         if($name == ''){
-            return $this->_data;
+            return $this->data;
         }else{
-            return isset($this->_data[$name]) ? $this->_data[$name] : null;
+            return isset($this->data[$name]) ? $this->data[$name] : null;
         }
     }
 
@@ -97,9 +97,9 @@ abstract class Model_Abstract extends Object_Abstract{
     public function unsetData($name = '')
     {
         if($name == ''){
-            unset($this->_data);
-        }elseif(isset($this->_data[$name])){
-            unset($this->_data[$name]);
+            unset($this->data);
+        }elseif(isset($this->data[$name])){
+            unset($this->data[$name]);
         }
 
         return $this;

@@ -9,7 +9,7 @@ abstract class Controllers_Abstract extends Object_Abstract{
     /**
      * @var array
      */
-    private $_data = array();
+    private $data = array();
 
 
 
@@ -26,10 +26,13 @@ abstract class Controllers_Abstract extends Object_Abstract{
      */
     protected function _initAction()
     {
-        $this->_data['blocks'] = array(
+        $this->data['blocks'] = array(
             'head'=> $this->getBlock('head'),
             'header'=> $this->getBlock('header')
         );
+        if($this->getError()){
+            $this->data['blocks']['error'] = $this->getBlock('error','error');
+        }
     }
 
 
@@ -40,9 +43,19 @@ abstract class Controllers_Abstract extends Object_Abstract{
      */
     public function setBlock($blockName, $reference)
    {
-       $this->_data['blocks'][$reference] = $this->getBlock($blockName);
+       $this->data['blocks'][$reference] = $this->getBlock($blockName);
        return $this;
    }
+
+    /**
+     * @param $error
+     * @return $this
+     */
+    public function addError($error)
+    {
+        $this->setError($error);
+        return $this;
+    }
 
 
     /**
@@ -81,13 +94,13 @@ abstract class Controllers_Abstract extends Object_Abstract{
     {
         $html = '<!DOCTYPE html><html>';
         if($this->isRedirect()){
-            $html .= $this->_data['blocks']['head']->toHtml();
+            $html .= $this->data['blocks']['head']->toHtml();
             $html .= '<body></body></html>';
             echo $html;
             return $this;
         }
         $bodyStart = true;
-        foreach($this->_data['blocks'] as $reference => $block){
+        foreach($this->data['blocks'] as $reference => $block){
             if($reference != 'head'){
                 $html .= '<div class="'.$reference.'">';
             }

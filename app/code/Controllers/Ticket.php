@@ -22,14 +22,28 @@ class Controllers_Ticket extends Controllers_Abstract
             $this->getModel('ticket/collection')->unsetData()->save();
             $tickets = $this->_prepareTicketsProperty($ticketsProperty);
             foreach($tickets as $data){
+                try{
 
-                $this->getModel('ticket/item')->setData($data)->save();
+                    $this->getModel('ticket/item')->setData($data)->save();
+
+                }catch (Exception $e){
+                    $this
+                        ->addError($e->getMessage())
+                        ->setRedirect('ticket')->toHtml();
+                }
             }
         }
 
-        $this->getModel('sorttickets')->sortTickets();
+        if($this->getModel('sorttickets')->sortTickets()){
 
-        $this->setRedirect('ticket/sorted')->toHtml();
+            $this->setRedirect('ticket/sorted')->toHtml();
+
+        }else{
+            $this
+                ->addError('You entered is not a full itinerary please try again')
+                ->setRedirect('ticket')->toHtml();
+        }
+
     }
 
     /**

@@ -36,7 +36,10 @@ class Model_Sorttickets extends Object_Abstract{
         for($i=1;$i < count($collectionTickets) ;$i++){
 
             $currentTicket = current($sortingTickets);
-            $nextPointTicket = $arrayFrom[$currentTicket->getData('to')];
+            if(!$nextPointTicket = $arrayFrom[$currentTicket->getData('to')]){
+                break;
+            }
+
             $sortingTickets[$nextPointTicket->getData('id')] = $nextPointTicket;
             next($sortingTickets);
 
@@ -44,7 +47,14 @@ class Model_Sorttickets extends Object_Abstract{
 
         reset($sortingTickets);
 
-        $this->saveSortingTickets($sortingTickets);
+        if(count($collectionTickets) == count($sortingTickets)){
+
+            $this->saveSortingTickets($sortingTickets);
+            return true;
+        }else{
+            return false;
+        }
+
 
     }
 
